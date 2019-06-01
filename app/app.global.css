@@ -2,46 +2,98 @@
  * @NOTE: Prepend a `~` to css file paths that are in your node_modules
  *        See https://github.com/webpack-contrib/sass-loader#imports
  */
-@import '~@fortawesome/fontawesome-free/css/all.css';
-
+@import '../node_modules/antd/dist/antd.css';
 body {
   position: relative;
-  color: white;
-  height: 100vh;
-  background-color: #232c39;
-  background-image: linear-gradient(
-    45deg,
-    rgba(0, 216, 255, 0.5) 10%,
-    rgba(0, 1, 127, 0.7)
-  );
+  height: 100%;
+  width: 100%;
   font-family: Arial, Helvetica, Helvetica Neue, serif;
   overflow-y: hidden;
 }
 
-h2 {
-  margin: 0;
-  font-size: 2.25rem;
-  font-weight: bold;
-  letter-spacing: -0.025em;
-  color: #fff;
+#root {
+  height: 100%;
+  width: 100%;
+  min-height: 600px;
+  overflow: scroll;
 }
 
-p {
-  font-size: 24px;
+.container {
+  height: 100%;
+  width: 100%;
+  background-color: #ececec;
 }
 
-li {
-  list-style: none;
+.margin-top {
+  margin-top: 20px;
 }
 
-a {
-  color: white;
-  opacity: 0.75;
-  text-decoration: none;
+.padding {
+  padding: 20px;
 }
 
-a:hover {
-  opacity: 1;
-  text-decoration: none;
-  cursor: pointer;
+.scroll {
+  overflow: scroll;
+}
+
+.logContent {
+  overflow: scroll;
+  height: 400px;
+}
+
+.logContent p span:first-child {
+  color: #4596d2;
+}
+
+.logContent p span:nth-child(2) {
+  color: #d26030;
+}
+
+.margin-left {
+  margin-left: 20px;
+}
+
+.language-bash {
+  width: 100%;
+  border-radius: 6px;
+  margin-top: 24px;
+  padding: 10px;
+  background: #f2f4f5;
+}
+
+.width100 {
+  width: 100%;
+}
+
+/* 滚动条的宽度 */
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+/* 外层轨道。可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果 */
+
+::-webkit-scrollbar-track {
+  width: 6px;
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  border-radius: 2em;
+}
+
+/* 滚动条的设置 */
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(96, 109, 113, 0.64);
+  background-clip: padding-box;
+  min-height: 28px;
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  border-radius: 2em;
+}
+
+/* 滚动条移上去的背景 */
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #fff;
 }
