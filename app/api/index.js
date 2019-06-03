@@ -21,3 +21,8 @@ export function setSyncDirInfo(dirInfo) {
 export function deleteSyncDir(id) {
   return axios.delete(`/syncDirs/id/${id}`)
 }
+
+
+export function reqCountInfo() {
+  return axios.get('/statistics');
+}

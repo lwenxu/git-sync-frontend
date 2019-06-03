@@ -45,26 +45,26 @@ class HomePage extends Component<Props> {
           <Row gutter={16}>
             <Col span={4}/>
             <Col span={4}>
-              <Statistic title="已同步文件" value={112893}
+              <Statistic title="同步目录数" value={this.props.settings.syncDirInfo.length}
                          prefix={<Icon type="cloud" theme="twoTone" twoToneColor="#52c41a"/>}/>
             </Col>
             <Col span={8}/>
             <Col span={4}>
-              <Statistic title="正在同步文件" value={112893} prefix={<Icon type="sync" spin/>}/>
+              <Statistic title="正在同步文件" value={this.props.settings.syncingFiles.length} prefix={<Icon type="sync" spin={this.props.settings.syncingFiles.length}/>}/>
             </Col>
             <Col span={4}/>
           </Row>
           <Row gutter={16} className="margin-top">
             <Col span={4}/>
             <Col span={4}>
-              <Statistic title="剩余时间" value={112893} prefix={<Icon type="clock-circle" theme="twoTone"/>}/>
-              <Progress className="margin-top" type="circle" percent={75} format={percent => `${percent} Days`}/>
+              <Statistic title="同步成功次数" value={this.props.settings.successCount} prefix={<Icon type="clock-circle" theme="twoTone"/>}/>
+              <Progress className="margin-top" type="circle" percent={this.props.settings.successCount} format={percent => `${percent} 次`}/>
             </Col>
             <Col span={8}/>
             <Col span={4}>
-              <Statistic title="已完成百分比" value={112893}
+              <Statistic title="同步失败次数" value={this.props.settings.failedCount}
                          prefix={<Icon type="dashboard" theme="twoTone" twoToneColor="#eb2f96"/>}/>
-              <Progress className="margin-top" type="circle" percent={75}/>
+              <Progress className="margin-top" type="circle" percent={this.props.settings.failedCount} format={percent => `${percent} 次`}/>
             </Col>
             <Col span={4}/>
           </Row>

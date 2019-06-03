@@ -291,10 +291,5 @@
     "url": "https://opencollective.com/electron-react-boilerplate-594"
   },
   "browserslist": "electron 1.6",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "__npminstall_done": false
 }

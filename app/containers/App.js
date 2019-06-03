@@ -1,7 +1,13 @@
 // @flow
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { getAccountInfo, getSyncDirInfos, updateSyncStatus } from '../actions/settings';
+import {
+  getAccountInfo,
+  getCountInfo,
+  getSyncDirInfos, updateFailedCount, updateSuccessCount,
+  updateSyncingFiles,
+  updateSyncStatus
+} from '../actions/settings';
 import SockJS from 'sockjs-client';
 import {Stomp} from '@stomp/stompjs';
 import config from '../config/config';
@@ -17,13 +23,24 @@ class App extends React.Component<Props> {
     // 获取配置信息
     this.props.getAccountInfo();
     this.props.getSyncDirInfos();
+    this.props.getCountInfo();
     let socket = new WebSocket(`${config.wsUrl}/ws`);
     socket.onmessage = ({data}) => {
       let originData = JSON.parse(data);
-      let syncInfo = originData['data'];
+      data = originData['data'];
+      console.log(data);
       switch (originData.type) {
         case 'sync_status_change':
-          this.props.updateSyncStatus(syncInfo);
+          this.props.updateSyncStatus(data);
+          break;
+        case 'syncing_files':
+          this.props.updateSyncingFiles(data);
+          break;
+        case 'sync_success':
+          this.props.updateSuccessCount(data);
+          break;
+        case 'sync_failed':
+          this.props.updateFailedCount(data);
           break;
       }
     };
@@ -37,5 +54,5 @@ class App extends React.Component<Props> {
 
 export default connect(
   state=>{return {info:state}},
-  {getAccountInfo,getSyncDirInfos,updateSyncStatus}
+  {getAccountInfo,getSyncDirInfos,updateSyncStatus,getCountInfo,updateSyncingFiles, updateSuccessCount, updateFailedCount}
 )(App);
